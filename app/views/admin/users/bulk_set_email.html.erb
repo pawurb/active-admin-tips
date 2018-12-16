@@ -1,0 +1,28 @@
+<%= semantic_form_for [:admin, form], html: { method: :put, :class => "form-horizontal" }, url: bulk_set_email_admin_users_path do |f| %>
+
+  <%= f.semantic_errors :base %>
+  <%= f.actions do %>
+    <%= f.action :submit, as: :button, label: "Update user emails" %>
+    <br>
+    <br>
+    <% form.users.each do |user| %>
+      <label>
+        <input
+          type="text"
+          name="users[users_emails][]"
+          id="users_users_emails_user_email"
+          value="<%= user.email %>"
+        />
+        <input
+          type="hidden"
+          name="users[users_ids][]"
+          id="users_users_emails_user_id"
+          value="<%= user.id %>"
+        />
+      </label>
+    <% end %>
+    <br>
+    <br>
+    <%= f.action :submit, as: :button, label: "Update user emails" %>
+  <% end %>
+<% end %>
